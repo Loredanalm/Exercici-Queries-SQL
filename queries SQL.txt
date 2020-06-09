@@ -1,0 +1,18 @@
+1. SELECT COUNT(*) FROM flights
+2. SELECT origin, AVG(ArrDelay) AS avg_arrival, AVG(DepDelay) AS avg_departure FROM `flights` 
+GROUP BY Origin
+3. SELECT origin, colYear, colMonth, AVG(ArrDelay) AS avg_arrival FROM `flights` 
+GROUP BY origin, colYear, colMonth
+4. SELECT city, colYear, colMonth, AVG(ArrDelay) AS avg_arrival FROM `flights`, `usairports` 
+WHERE flights.Origin = usairports.IATA 
+GROUP BY city, colYear , colMonth 
+ORDER BY city ASC, colYear ASC, colMonth ASC
+5. SELECT UniqueCarrier, colYear, colMonth, SUM(Cancelled) AS total_cancelled FROM `flights` 
+GROUP BY UniqueCarrier 
+HAVING SUM(Cancelled) > 0 ORDER BY SUM(Cancelled) DESC
+6. SELECT DISTINCT TAILNUM, SUM(Distance) AS totalDistance FROM `flights` 
+GROUP BY TailNum ORDER BY SUM(Distance) DESC LIMIT 10
+7. SELECT UniqueCarrier, AVG(ArrDelay) as avgDelay FROM `flights`
+GROUP BY UniqueCarrier
+HAVING AVG(ArrDelay) > 10
+ORDER BY AVG(ArrDelay) DESC
